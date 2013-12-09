@@ -55,8 +55,12 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 set number 
-set tabstop=4
+
+set expandtab
 set shiftwidth=4
+set softtabstop=4
+""set tabstop=4
+""set shiftwidth=4
 "set omnifunc=pythoncomplete#Complete
 "setlocal omnifunc=pythoncomplete#Complete
 set autoindent
