@@ -11,6 +11,23 @@
 runtime! debian.vim
 execute pathogen#infect()
 filetype plugin indent on
+" set background=dark
+" coloscheme solarized
+set guifont=DejaVu\ Sans\ Mono\ 15
+set antialias
+set nocompatible
+set title
+set ruler
+set scrolloff=3
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set backspace=indent,eol,start
+set hidden
+"autocmd vimenter * NERDTree
+
+
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
@@ -83,4 +100,21 @@ let OmniCpp_SelectFirstItem = 2 " Select first item, but don't insert.
 let OmniCpp_NamespaceSearch = 2 " Search namespaces in all included files.
 let OmniCpp_ShowPrototypeInAbbr = 1 " Show function prototypes in items.
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType c set omnifunc=ccomplete#Complete
+
+
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgrey
+
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+let mapleader=","
+let g:CommandTSelectNextMap=['<C-n>',' <Down>']
+let g:CommandTSelectPrevMap=['<C-p>', 'Up']
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:CommandTCancelMap=['<C-c>']
 
