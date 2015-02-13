@@ -11,8 +11,8 @@
 runtime! debian.vim
 execute pathogen#infect()
 filetype plugin indent on
-" set background=dark
-" coloscheme solarized
+set background=dark
+colorscheme solarized
 set guifont=DejaVu\ Sans\ Mono\ 15
 set antialias
 set nocompatible
@@ -25,6 +25,7 @@ set incsearch
 set hlsearch
 set backspace=indent,eol,start
 set hidden
+se mouse=r
 "autocmd vimenter * NERDTree
 
 
@@ -76,7 +77,7 @@ set number
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-""set tabstop=4
+set tabstop=4
 ""set shiftwidth=4
 "set omnifunc=pythoncomplete#Complete
 "setlocal omnifunc=pythoncomplete#Complete
