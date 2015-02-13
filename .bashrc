@@ -95,12 +95,20 @@ fi
 
 /usr/bin/mint-fortune
 
-alias py=python3
-alias cdos=cd\ /media/windows/Users/joel/Documents/HES/Sem4/Prog_concurrent/tp-prog-conc-2014/
-alias cdhes=cd\ /media/windows/Users/joel/Documents/HES/
-alias weather=py\ /media/windows/Users/joel/Documents/HES/Sem4/Prog_concurrent/tp-prog-conc-2014/tp12/weather2.py
-alias vimrc=vim ~.vimrc
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> ~/.bashrc
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+if [ -f ~/.aliases ]; then
+        . ~/.aliases
+fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
