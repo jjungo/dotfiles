@@ -38,8 +38,8 @@ Bundle 'gmarik/vundle'
 filetype plugin indent on 
 
 
-set background=dark
-colorscheme solarized
+"set background=dark
+colorscheme busybee 
 set guifont=DejaVu\ Sans\ Mono\ 15
 
 " Line Numbers
@@ -49,7 +49,7 @@ set tw=79
 set nowrap
 set fo-=t
 set colorcolumn=80
-highlight ColorColum ctermbg=233
+highlight ColorColumn guibg=#2d2d2d ctermbg=0
 
 vmap Q gq
 nmap Q gqap
@@ -82,6 +82,13 @@ set bs=2
 " Rebind <Leader> key
 let mapleader = ","
 
+
+
+nnoremap <S-j> <PageUp>
+nnoremap <S-k> <PageDown>
+nnoremap <S-h> <Home>
+nnoremap <S-l> <End>
+
 " Removes highlight of your last search
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
@@ -107,9 +114,16 @@ vnoremap <tab> >gv
 "plugins (in .vim/bundle)
 " git clone git://github.com/Lokaltog/vim-powerline.git
 set laststatus=2
+set t_Co=256
 
 " git clone git://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 10
+
+" Cool plugin to comment block of code
+" https://github.com/scrooloose/nerdcommenter
+"  <leader>c<space>     =>      Toggle comment
+"  <leader>ci           =>      Invert comment
+"  <leader>cs           =>      Sexy way
 
 "-----------------------python---------------------
 let g:jedi#usages_command = "<leader>z"
@@ -129,8 +143,8 @@ set nofoldenable
 " git submodule update --init --recursive
 " ./install.sh --clang-completer
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_show_diagnostics_ui = 0
 
 nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>k :YcmCompleter GoToDeclaration<CR>
-
 
