@@ -41,7 +41,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-"
+Plugin 'scrooloose/nerdtree'
 " " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 call vundle#end()
@@ -135,7 +135,7 @@ let g:ctrlp_max_height = 10
 "  <leader>ci           =>      Invert comment
 "  <leader>cs           =>      Sexy way
 
-
+map <C-n> :NERDTreeToggle<CR>
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
  let g:UltiSnipsExpandTrigger="<c-s>"
