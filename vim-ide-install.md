@@ -58,3 +58,7 @@ Copy and place my .vim/.ycm\_extra\_conf.py in your ~/.vim/
 
 run `vim` and `:PluginInstall`
 
+Finally, compile YouCompleteMe
+    
+    cd .vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer
