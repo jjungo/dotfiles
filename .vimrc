@@ -32,9 +32,19 @@ call pathogen#infect()
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
 
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+"
+" " Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+call vundle#end()
 filetype plugin indent on 
 
 
@@ -83,7 +93,7 @@ set bs=2
 let mapleader = ","
 
 
-
+" Moving faster into the page
 nnoremap <S-j> <PageUp>
 nnoremap <S-k> <PageDown>
 nnoremap <S-h> <Home>
@@ -112,11 +122,11 @@ vnoremap <S-tab> <gv
 vnoremap <tab> >gv
 
 "plugins (in .vim/bundle)
-" git clone git://github.com/Lokaltog/vim-powerline.git
+" git://github.com/Lokaltog/vim-powerline.git
 set laststatus=2
 set t_Co=256
 
-" git clone git://github.com/kien/ctrlp.vim.git
+" git://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 10
 
 " Cool plugin to comment block of code
@@ -124,6 +134,17 @@ let g:ctrlp_max_height = 10
 "  <leader>c<space>     =>      Toggle comment
 "  <leader>ci           =>      Invert comment
 "  <leader>cs           =>      Sexy way
+
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+ let g:UltiSnipsExpandTrigger="<c-s>"
+ let g:UltiSnipsJumpForwardTrigger="<c-b>"
+ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+" " If you want :UltiSnipsEdit to split your window.
+ let g:UltiSnipsEditSplit="vertical"
+
 
 "-----------------------python---------------------
 let g:jedi#usages_command = "<leader>z"
@@ -138,9 +159,7 @@ set nofoldenable
 
 
 "-----------------------C - C++--------------------
-" git clone https://github.com/Valloric/YouCompleteMe.git
-" cd YouCompleteMe
-" git submodule update --init --recursive
+" https://github.com/Valloric/YouCompleteMe
 " ./install.sh --clang-completer
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_show_diagnostics_ui = 0

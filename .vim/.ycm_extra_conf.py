@@ -13,6 +13,7 @@ flags = [
     '-Wno-long-long',
     '-Wno-variadic-macros',
     '-fexceptions',
+    'clang++',
     # THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
     # language to use when compiling headers. So it will guess. Badly. So C++
     # headers will be compiled as C headers. You don't want that so ALWAYS specify
@@ -30,6 +31,7 @@ flags = [
     '-isystem', '/System/Library/Frameworks/Python.framework/Headers',
     '-isystem', '/usr/local/include',
     '-isystem', '/usr/local/include/eigen3',
+    '-isystem', '/usr/lib/c++/v1',
     '-I', 'include'
     '-I.'
 ]
