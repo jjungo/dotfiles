@@ -27,11 +27,11 @@ autocmd! bufwritepost .vimrc source %
 "set secure
 
 " Global def, theme, color, etc
+" turn this of if you dont use debian based OS
 runtime! debian.vim
-call pathogen#infect()
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'

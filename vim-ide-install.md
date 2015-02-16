@@ -52,7 +52,9 @@ You may have +python +python3 +clipboard compilation's options.
     mkdir -p ~/.vim/{bundle,autoload}
 
 ###Install my conf
-Copy and place my .vimrc in your vim directory (~/.vim)
+Copy and place my .vimrc in your home directory
+
+Copy and place my .vim/.ycm\_extra\_conf.py in your ~/.vim/
 
 run `vim` and `:PluginInstall`
 
