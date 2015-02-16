@@ -14,7 +14,7 @@ This is a way to install vim as python2/3 and C/C++ ide
     python3
     git
     python-dev
-    python-dev3
+    python3-dev
     libncurses5-dev
 
 ###Build
