@@ -44,9 +44,14 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 " " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+Plugin 'jplaut/vim-arduino-ino'
+Plugin 'tpope/vim-surround'
 call vundle#end()
 filetype plugin indent on 
 
+" Encoding
+set termencoding=utf-8
+set encoding=utf-8
 
 "set background=dark
 colorscheme busybee 
@@ -64,9 +69,14 @@ highlight ColorColumn guibg=#2d2d2d ctermbg=0
 vmap Q gq
 nmap Q gqap
 
+" Rebind <Leader> key
+let mapleader = ","
+
 " Usefull things
 set history=500
 set undolevels=700
+" set show matching parenthesis
+set showmatch      
 
 " Tabs
 set tabstop=4
@@ -89,9 +99,8 @@ set clipboard=unnamedplus
 set mouse=a
 set bs=2
 
-" Rebind <Leader> key
-let mapleader = ","
-
+" Toggle show/hide invisible chars
+nnoremap <leader>i :set list!<cr>
 
 " Moving faster into the page
 nnoremap <S-j> <PageUp>
@@ -100,9 +109,9 @@ nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
 
 " Removes highlight of your last search
-noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
+noremap <F3> :nohl<CR>
+vnoremap <F3> :nohl<CR>
+inoremap <F3> :nohl<CR>
 
 " Rebind for saving
 " Note you should add stty -ixon in your .bashrc or .zshrc
@@ -111,6 +120,7 @@ nnoremap <C-s> :w<cr>a
 
 " Rebind for quit
 noremap <C-q> :quit<CR>
+noremap <C-q>q :quit!<CR>
 
 " Rebind for tab
 map <Leader>t <esc>:tabnew<CR>
@@ -166,4 +176,13 @@ let g:ycm_show_diagnostics_ui = 0
 
 nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>k :YcmCompleter GoToDeclaration<CR>
+
+
+"-----------------------Arduino--------------------
+"https://github.com/tclem/vim-arduino
+"Default: /Applications/Arduino.app/Contents/Resources/Java
+"let g:vim_arduino_library_path = "/home/joel/.arduino/"
+"Default: result of `$(ls /dev/tty.* | grep usb)`
+"let g:vim_arduino_serial_port = "/dev/ttyACM0"
+
 
