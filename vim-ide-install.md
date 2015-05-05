@@ -18,7 +18,7 @@ This is a way to install vim as python2/3 and C/C++ ide
     libncurses5-dev
 
 ###Build
-We must hav to compile vim in order to have right options available.
+We must have to compile vim in order to have right options available.
 
     hg clone https://vim.googlecode.com/hg/ vim
     cd vim
