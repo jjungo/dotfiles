@@ -103,8 +103,8 @@ set bs=2
 nnoremap <leader>i :set list!<cr>
 
 " Moving faster into the page
-nnoremap <S-j> <PageUp>
-nnoremap <S-k> <PageDown>
+nnoremap <S-k> <PageUp>
+nnoremap <S-j> <PageDown>
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
 
@@ -115,8 +115,8 @@ inoremap <F3> :nohl<CR>
 
 " Rebind for saving
 " Note you should add stty -ixon in your .bashrc or .zshrc
-inoremap <C-s> <esc>:w<cr>a
-nnoremap <C-s> :w<cr>a
+inoremap <C-s> <esc>:w<cr>
+nnoremap <C-s> :w<cr>
 
 " Rebind for quit
 noremap <C-q> :quit<CR>
@@ -126,6 +126,7 @@ noremap <C-q>q :quit!<CR>
 map <Leader>t <esc>:tabnew<CR>
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
+map <Leader>q <esc>:tabclose<CR>
 
 "Moving code block
 vnoremap <S-tab> <gv
@@ -177,12 +178,4 @@ let g:ycm_show_diagnostics_ui = 0
 nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>k :YcmCompleter GoToDeclaration<CR>
 
-
-"-----------------------Arduino--------------------
-"https://github.com/tclem/vim-arduino
-"Default: /Applications/Arduino.app/Contents/Resources/Java
-"let g:vim_arduino_library_path = "/home/joel/.arduino/"
-"Default: result of `$(ls /dev/tty.* | grep usb)`
-"let g:vim_arduino_serial_port = "/dev/ttyACM0"
-
-
+map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
