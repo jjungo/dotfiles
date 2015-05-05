@@ -46,6 +46,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'honza/vim-snippets'
 Plugin 'jplaut/vim-arduino-ino'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/BusyBee'
 call vundle#end()
 filetype plugin indent on 
 
@@ -54,7 +55,7 @@ set termencoding=utf-8
 set encoding=utf-8
 
 "set background=dark
-colorscheme busybee 
+colorscheme BusyBee
 set guifont=DejaVu\ Sans\ Mono\ 15
 
 " Line Numbers
