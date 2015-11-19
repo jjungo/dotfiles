@@ -32,9 +32,23 @@ flags = [
     '-isystem', '/usr/local/include',
     '-isystem', '/usr/local/include/eigen3',
     '-isystem', '/usr/lib/c++/v1',
-    '-I', 'include'
+    '-I', '/usr/include/gtkmm-3.0',
+
+    '-I', 'include',
     '-I.'
 ]
+
+
+
+def genPackageConfig(flags, package_name):
+    def not_whitespace(string):
+        return not (string == '' or string == '\n')
+    stream = os.popen("pkg-config --cflags " + package_name)
+    includes = stream.read().split(' ')
+    includes = filter(not_whitespace, includes)
+    return flags + includes
+flags = genPackageConfig(flags, 'gtkmm-3.0')
+
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for
