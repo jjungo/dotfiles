@@ -16,11 +16,12 @@ This is a way to install vim as python2/3 and C/C++ ide
     python-dev
     python3-dev
     libncurses5-dev
+    cmake
 
 ###Build
 We must have to compile vim in order to have right options available.
 
-    hg clone https://vim.googlecode.com/hg/ vim
+    git clone https://github.com/vim/vim
     cd vim
     ./configure --enable-pythoninterp \
         --enable-python3interp \
@@ -61,4 +62,4 @@ run `vim` and `:PluginInstall`
 Finally, compile YouCompleteMe
     
     cd .vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer
+    ./install.py --clang-completer
