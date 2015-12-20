@@ -1,4 +1,5 @@
 source "gpg -dq $HOME/.mutt/.pwd.gpg |"
+source ~/.mutt/colors.zenburn
 set from = "j.jungo@gmail.com"
 set realname = "Joël Jungo"
 
@@ -21,10 +22,14 @@ set smtp_pass = $my_gmail_pwd
 
 bind editor <space> noop
 bind index "R" imap-fetch-mail
+bind index "G" group-reply
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to all mail"
 macro index,pager ga "<change-folder>=[Gmail]/Tous les messages<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Messages envoyés<enter>" " Go to sent mail"
 macro index,pager gd "<change-folder>=[Gmail]/Corbeille<enter>" "Go to drafts"
+macro attach W <save-entry><kill-line>$HOME/Téléchargements/
+bind pager j next-line
+bind pager k previous-line
 
 set move = no #Stop asking to "move read messages to mbox"!
 set imap_keepalive = 900
@@ -36,3 +41,11 @@ set locale="fr_CH"
 set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
 auto_view text/html
 set locale="iso-8859-15"
+
+set alias_file = "~/.mutt/aliases"
+set sort_alias = alias
+set reverse_alias = yes
+source $alias_file
+
+set sort = reverse-date-received
+set quit=ask-yes
