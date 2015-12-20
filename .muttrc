@@ -1,0 +1,38 @@
+source "gpg -dq $HOME/.mutt/.pwd.gpg |"
+set from = "j.jungo@gmail.com"
+set realname = "Joël Jungo"
+
+set imap_user = "j.jungo@gmail.com"
+set imap_pass = $my_gmail_pwd
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set trash = +[Gmail]/Trash
+
+set copy = no
+
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+set smtp_url = "smtp://j.jungo@smtp.gmail.com:587/"
+set smtp_pass = $my_gmail_pwd
+
+bind editor <space> noop
+bind index "R" imap-fetch-mail
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to all mail"
+macro index,pager ga "<change-folder>=[Gmail]/Tous les messages<enter>" "Go to all mail"
+macro index,pager gs "<change-folder>=[Gmail]/Messages envoyés<enter>" " Go to sent mail"
+macro index,pager gd "<change-folder>=[Gmail]/Corbeille<enter>" "Go to drafts"
+
+set move = no #Stop asking to "move read messages to mbox"!
+set imap_keepalive = 900
+
+set editor = vim
+
+set locale="fr_CH"
+
+set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
+auto_view text/html
+set locale="iso-8859-15"
