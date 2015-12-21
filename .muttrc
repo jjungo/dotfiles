@@ -1,5 +1,5 @@
 source "gpg -dq $HOME/.mutt/.pwd.gpg |"
-source ~/.mutt/GPG
+#source ~/.mutt/GPG
 set from = "j.jungo@gmail.com"
 set realname = "Joël Jungo"
 
@@ -18,16 +18,20 @@ set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set trash = +[Gmail]/Trash
 
-set move = no #Stop asking to "move read messages to mbox"!
+set move = no
 set imap_keepalive = 900
 set timeout = 60
-set editor = vim
+set editor="vim + -c 'setlocal fo+=aw'"
+set text_flowed=yes
 set locale="fr_CH"
 set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
 auto_view text/html
 set locale="iso-8859-15"
 set copy = no
 set quit=ask-yes
+set forward_format = "Fwd: %s"
+set mime_forward=yes
+set mime_forward_rest=yes
 
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
@@ -40,11 +44,13 @@ bind index "G" group-reply
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to all mail"
 macro index,pager ga "<change-folder>=[Gmail]/Tous les messages<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Messages envoyés<enter>" " Go to sent mail"
-macro index,pager gd "<change-folder>=[Gmail]/Corbeille<enter>" "Go to drafts"
+macro index,pager gt "<change-folder>=[Gmail]/Corbeille<enter>" "Go to drafts"
 macro attach W <save-entry><kill-line>$HOME/Téléchargements/
 macro index .n  "<limit>(~N|~O)<Enter>"   "view new/flag"
 macro index .i  "<limit>~F<Enter>"        "view important"
 macro index .a  "<limit>~A<Enter>"        "view all"
+macro index,pager d "<save-message>=[Gmail]/Corbeille<enter><enter>" "Trash"
+macro index,pager y "<save-message>=[Gmail]/Tous les messages<enter><enter>" "Archive"
 bind pager j next-line
 bind pager k previous-line
 
