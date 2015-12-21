@@ -1,0 +1,11 @@
+#Don't forget to set following var
+set my_gpg_id=
+
+set crypt_use_gpgme=no
+set crypt_autosign
+set crypt_replysign
+set crypt_replysignencrypted=yes
+set pgp_timeout=3600
+set pgp_sign_as=$my_gpg_id
+set crypt_verify_sig=yes
+bind compose p  pgp-menu

@@ -1,25 +1,39 @@
 source "gpg -dq $HOME/.mutt/.pwd.gpg |"
-source ~/.mutt/colors.zenburn
+source ~/.mutt/GPG
 set from = "j.jungo@gmail.com"
 set realname = "Joël Jungo"
 
+# don't forget to set TERM=xterm-256color
+# $ tput colors
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
+
+#----------------------------imap & smtp---------------------------------------
 set imap_user = "j.jungo@gmail.com"
 set imap_pass = $my_gmail_pwd
+set smtp_url = "smtp://j.jungo@smtp.gmail.com:587/"
+set smtp_pass = $my_gmail_pwd
 
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set trash = +[Gmail]/Trash
 
+set move = no #Stop asking to "move read messages to mbox"!
+set imap_keepalive = 900
+set timeout = 60
+set editor = vim
+set locale="fr_CH"
+set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
+auto_view text/html
+set locale="iso-8859-15"
 set copy = no
+set quit=ask-yes
 
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set certificate_file = ~/.mutt/certificates
 
-set smtp_url = "smtp://j.jungo@smtp.gmail.com:587/"
-set smtp_pass = $my_gmail_pwd
-
+#-------------------------general bind & macros--------------------------------
 bind editor <space> noop
 bind index "R" imap-fetch-mail
 bind index "G" group-reply
@@ -28,24 +42,50 @@ macro index,pager ga "<change-folder>=[Gmail]/Tous les messages<enter>" "Go to a
 macro index,pager gs "<change-folder>=[Gmail]/Messages envoyés<enter>" " Go to sent mail"
 macro index,pager gd "<change-folder>=[Gmail]/Corbeille<enter>" "Go to drafts"
 macro attach W <save-entry><kill-line>$HOME/Téléchargements/
+macro index .n  "<limit>(~N|~O)<Enter>"   "view new/flag"
+macro index .i  "<limit>~F<Enter>"        "view important"
+macro index .a  "<limit>~A<Enter>"        "view all"
 bind pager j next-line
 bind pager k previous-line
 
-set move = no #Stop asking to "move read messages to mbox"!
-set imap_keepalive = 900
-
-set editor = vim
-
-set locale="fr_CH"
-
-set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
-auto_view text/html
-set locale="iso-8859-15"
-
+#--------------------------aliases---------------------------------------------
 set alias_file = "~/.mutt/aliases"
 set sort_alias = alias
 set reverse_alias = yes
 source $alias_file
 
-set sort = reverse-date-received
-set quit=ask-yes
+#---------------------------threads--------------------------------------------
+set sort = 'threads'
+set sort_aux = 'reverse-last-date-received'
+unset collapse_unread
+bind index - collapse-thread
+bind index _ collapse-all
+
+#---------------------------sidebar--------------------------------------------
+# set up the sidebar, default not visible
+set sidebar_width=27
+set sidebar_visible=yes
+set sidebar_delim='|'
+set sidebar_sort=no
+
+# which mailboxes to list in the sidebar
+mailboxes =INBOX ="[Gmail]/Tous les messages"
+mailboxes ="[Gmail]/Messages envoyés"
+mailboxes =[Gmail]/Corbeille
+mailboxes =[Gmail]/Spam
+
+# color of folders with new mail
+color sidebar_new yellow default
+
+# ctrl-n, ctrl-p to select next, prev folder
+# ctrl-o to open selected folder
+bind index \CP sidebar-prev
+bind index \CN sidebar-next
+bind index \CO sidebar-open
+
+# b toggles sidebar visibility
+macro index b '<enter-command>toggle sidebar_visible<enter>'
+macro pager b '<enter-command>toggle sidebar_visible<enter>'
+
+# Remap bounce-message function to "B"
+bind index B bounce-message
