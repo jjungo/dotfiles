@@ -47,8 +47,9 @@ Plugin 'honza/vim-snippets'
 Plugin 'jplaut/vim-arduino-ino'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/BusyBee'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 call vundle#end()
-filetype plugin indent on 
+filetype plugin indent on
 
 " Encoding
 set termencoding=utf-8
@@ -77,7 +78,7 @@ let mapleader = ","
 set history=500
 set undolevels=700
 " set show matching parenthesis
-set showmatch      
+set showmatch
 
 " Tabs
 set tabstop=4
@@ -102,6 +103,7 @@ set bs=2
 
 " Toggle show/hide invisible chars
 nnoremap <leader>i :set list!<cr>
+nnoremap <leader>o :%s/\s\+$//<cr>
 
 " Moving faster into the page
 nnoremap <S-k> <PageUp>
@@ -178,5 +180,11 @@ let g:ycm_show_diagnostics_ui = 0
 
 nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>k :YcmCompleter GoToDeclaration<CR>
+
+let g:DoxygenToolkit_briefTag_pre="@Brief "
+let g:DoxygenToolkit_paramTag_pre="@Param "
+let g:DoxygenToolkit_returnTag="@Returns   "
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:DoxygenToolkit_compactDoc="yes"
 
 map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
