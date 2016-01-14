@@ -79,6 +79,7 @@ mailboxes =INBOX ="[Gmail]/Tous les messages"
 mailboxes ="[Gmail]/Messages envoyés"
 mailboxes =[Gmail]/Corbeille
 mailboxes =[Gmail]/Spam
+mailboxes =[Gmail]/openssl-ud
 
 # color of folders with new mail
 color sidebar_new yellow default
