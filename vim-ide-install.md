@@ -8,7 +8,6 @@ This is a way to install vim as python2/3 and C/C++ ide
 
     libx11-dev
     libxt-dev
-    mercurial
     build-essential
     python 
     python3
