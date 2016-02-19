@@ -48,6 +48,10 @@ Plugin 'jplaut/vim-arduino-ino'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/BusyBee'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'burnettk/vim-angular'
+Plugin 'alvan/vim-closetag'
+Plugin 'Townk/vim-autoclose'
+Plugin 'maksimr/vim-jsbeautify'
 call vundle#end()
 filetype plugin indent on
 
@@ -186,5 +190,9 @@ let g:DoxygenToolkit_paramTag_pre="@Param "
 let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:DoxygenToolkit_compactDoc="yes"
+nnoremap <Leader>7 :Dox<CR>
 
 map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
+
+"close tag
+let g:closetag_filenames = "*.html,*.xhtml"
