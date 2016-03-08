@@ -48,6 +48,7 @@ Plugin 'jplaut/vim-arduino-ino'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/BusyBee'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'davidhalter/jedi-vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -186,5 +187,9 @@ let g:DoxygenToolkit_paramTag_pre="@Param "
 let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:DoxygenToolkit_compactDoc="yes"
+map <Leader>7 <esc>:Dox<CR>
 
 map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
+
+:nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " ."<cr>:!clear<cr>:copen<cr>
+:nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " ."<cr>:!clear<cr>:copen<cr>
