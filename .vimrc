@@ -49,6 +49,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/BusyBee'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'burnettk/vim-angular'
+Plugin 'alvan/vim-closetag'
+Plugin 'Townk/vim-autoclose'
+Plugin 'maksimr/vim-jsbeautify'
 call vundle#end()
 filetype plugin indent on
 
@@ -193,3 +197,6 @@ map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
 
 :nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " ."<cr>:!clear<cr>:copen<cr>
 :nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " ."<cr>:!clear<cr>:copen<cr>
+
+"close tag
+let g:closetag_filenames = "*.html,*.xhtml"
