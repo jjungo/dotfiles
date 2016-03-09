@@ -65,7 +65,6 @@ colorscheme BusyBee
 set guifont=DejaVu\ Sans\ Mono\ 15
 
 " Line Numbers
-syntax on
 set number
 set tw=79
 set nowrap
@@ -195,8 +194,8 @@ map <Leader>7 <esc>:Dox<CR>
 
 map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
 
-:nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " ."<cr>:!clear<cr>:copen<cr>
-:nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " ."<cr>:!clear<cr>:copen<cr>
+:nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
+:nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
 
 "close tag
 let g:closetag_filenames = "*.html,*.xhtml"
