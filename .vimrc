@@ -44,15 +44,11 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 " " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-Plugin 'jplaut/vim-arduino-ino'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/BusyBee'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'burnettk/vim-angular'
-Plugin 'alvan/vim-closetag'
-Plugin 'Townk/vim-autoclose'
-Plugin 'maksimr/vim-jsbeautify'
+Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 filetype plugin indent on
 
@@ -139,6 +135,9 @@ map <Leader>q <esc>:tabclose<CR>
 vnoremap <S-tab> <gv
 vnoremap <tab> >gv
 
+"refresh"
+map <F5> :e<CR>
+
 "plugins (in .vim/bundle)
 " git://github.com/Lokaltog/vim-powerline.git
 set laststatus=2
@@ -152,6 +151,23 @@ let g:ctrlp_max_height = 10
 "  <leader>c<space>     =>      Toggle comment
 "  <leader>ci           =>      Invert comment
 "  <leader>cs           =>      Sexy way
+
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+"Make Alt key work
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
 
 map <C-n> :NERDTreeToggle<CR>
 " Trigger configuration. Do not use <tab> if you use
@@ -168,6 +184,7 @@ map <C-n> :NERDTreeToggle<CR>
 let g:jedi#usages_command = "<leader>z"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
+let g:jedi#documentation_command = "<leader>d"
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 " Python folding
 " " mkdir -p ~/.vim/ftplugin
@@ -194,8 +211,9 @@ map <Leader>7 <esc>:Dox<CR>
 
 map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
 
+
 :nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
+:nnoremap <leader>a :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " ."<cr>:!clear<cr>:copen 7<cr>
+:nnoremap <leader>A :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " ."<cr>:!clear<cr>:copen 7<cr>
 :nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
 
-"close tag
-let g:closetag_filenames = "*.html,*.xhtml"
