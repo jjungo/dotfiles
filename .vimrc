@@ -49,6 +49,7 @@ Plugin 'vim-scripts/BusyBee'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
 
@@ -169,7 +170,9 @@ endw
 
 set timeout ttimeoutlen=50
 
-map <C-n> :NERDTreeToggle<CR>
+set selection=inclusive
+
+map <C-t> :NERDTreeToggle<CR>
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
  let g:UltiSnipsExpandTrigger="<c-s>"
@@ -216,4 +219,14 @@ map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
 :nnoremap <leader>a :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " ."<cr>:!clear<cr>:copen 7<cr>
 :nnoremap <leader>A :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " ."<cr>:!clear<cr>:copen 7<cr>
 :nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
+
+:nnoremap <space>dg :diffget<space>
+:nnoremap <space>du :diffupdate<CR>
+:nnoremap <space>gb :Git branch<space>
+:nnoremap <space>gc :Gcommit -v -q<CR>
+:nnoremap <space>gd :Gdiff<CR>
+:nnoremap <space>gm :Gmerge<space>
+:nnoremap <space>go :Git checkout<space>
+:nnoremap <space>gs :Gstatus<CR>
+:nnoremap <space>gw :Gwrite<CR>
 
