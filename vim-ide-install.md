@@ -1,23 +1,23 @@
-HOWTO
-===
+# HOWTO
+
 
 This is a way to install vim as python2/3 and C/C++ ide
 
 
-###Requirement
+### Requirement
 
-    libx11-dev
-    libxt-dev
-    build-essential
-    python 
-    python3
-    git
-    python-dev
-    python3-dev
-    libncurses5-dev
+    sudo apt-get install libx11-dev \
+    libxt-dev \
+    build-essential \
+    python \
+    python3 \
+    git \
+    python-dev \
+    python3-dev \
+    libncurses5-dev \
     cmake
 
-###Build
+### Build
 We must have to compile vim in order to have right options available.
 
     git clone https://github.com/vim/vim
@@ -37,7 +37,7 @@ We must have to compile vim in order to have right options available.
         --prefix=/usr \
         --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ 
 
-    make VIMRUNTIMEDIR=/usr/share/vim/vim74 
+    make VIMRUNTIMEDIR=/usr/share/vim/vim80 
     sudo make install    
     
     which vim
@@ -45,13 +45,14 @@ We must have to compile vim in order to have right options available.
 
 You may have +python +python3 +clipboard compilation's options.
 
-###We use Vundle to manage plugins
+### We use Vundle to manage plugins
     
     cd
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     mkdir -p ~/.vim/{bundle,autoload}
 
-###Install my conf
+### Install my conf
+
 Copy and place my .vimrc in your home directory
 
 Copy and place my .vim/.ycm\_extra\_conf.py in your ~/.vim/
