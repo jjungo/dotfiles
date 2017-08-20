@@ -1,3 +1,4 @@
+"
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
 " /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
 " you can find below.  If you wish to change any of those settings, you should
@@ -50,6 +51,8 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 filetype plugin indent on
 
@@ -58,7 +61,9 @@ set termencoding=utf-8
 set encoding=utf-8
 
 "set background=dark
-colorscheme BusyBee
+"colorscheme jellyx
+"colorscheme obsidian
+colorscheme zenburn
 set guifont=DejaVu\ Sans\ Mono\ 15
 
 " Line Numbers
@@ -213,6 +218,7 @@ let g:DoxygenToolkit_compactDoc="yes"
 map <Leader>7 <esc>:Dox<CR>
 
 map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
+nmap <F9> :TagbarToggle<CR>
 
 
 :nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
