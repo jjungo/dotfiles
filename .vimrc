@@ -1,4 +1,3 @@
-"
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
 " /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
 " you can find below.  If you wish to change any of those settings, you should
@@ -51,19 +50,18 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 call vundle#end()
 filetype plugin indent on
+
+syntax on
 
 " Encoding
 set termencoding=utf-8
 set encoding=utf-8
 
 "set background=dark
-"colorscheme jellyx
-"colorscheme obsidian
-colorscheme zenburn
+colorscheme BusyBee
 set guifont=DejaVu\ Sans\ Mono\ 15
 
 " Line Numbers
@@ -206,6 +204,7 @@ set nofoldenable
 " ./install.sh --clang-completer
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_show_diagnostics_ui = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>k :YcmCompleter GoToDeclaration<CR>
@@ -219,6 +218,17 @@ map <Leader>7 <esc>:Dox<CR>
 
 map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
 nmap <F9> :TagbarToggle<CR>
+
+function! SwitchSourceHeader()
+  "update!
+  if (expand ("%:e") == "c")
+    find %:t:r.h
+  else
+    find %:t:r.c
+  endif
+endfunction
+
+:nmap <F4> :call SwitchSourceHeader()<CR>
 
 
 :nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
@@ -235,4 +245,6 @@ nmap <F9> :TagbarToggle<CR>
 :nnoremap <space>go :Git checkout<space>
 :nnoremap <space>gs :Gstatus<CR>
 :nnoremap <space>gw :Gwrite<CR>
+
+:nnoremap <A-p> :CtrlPClearAllCaches<CR>\|:CtrlP<CR>
 
