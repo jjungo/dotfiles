@@ -231,10 +231,10 @@ endfunction
 :nmap <F4> :call SwitchSourceHeader()<CR>
 
 
-:nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
-:nnoremap <leader>a :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " ."<cr>:!clear<cr>:copen 7<cr>
-:nnoremap <leader>A :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " ."<cr>:!clear<cr>:copen 7<cr>
-:nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " *.[!'swp'o]"<cr>:!clear<cr>:copen 7<cr>
+:nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " *.[!'swp'o]"<cr>:!clear<cr>:botright copen 7<cr>
+:nnoremap <leader>a :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " ."<cr>:!clear<cr>:botright copen 7<cr>
+:nnoremap <leader>A :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " ."<cr>:!clear<cr>:botright copen 7<cr>
+:nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " *.[!'swp'o]"<cr>:!clear<cr>:botright copen 7<cr>
 
 :nnoremap <space>dg :diffget<space>
 :nnoremap <space>du :diffupdate<CR>
