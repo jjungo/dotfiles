@@ -23,8 +23,8 @@ autocmd! bufwritepost .vimrc source %
 
 " force vim to sources .vimrc file into the current directory and do it
 " securely
-"set exrc
-"set secure
+set exrc
+set secure
 
 " Global def, theme, color, etc
 " turn this of if you dont use debian based OS
@@ -45,12 +45,13 @@ Plugin 'scrooloose/nerdtree'
 " " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/BusyBee'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
+Plugin 'vivien/vim-linux-coding-style'
 call vundle#end()
 filetype plugin indent on
 
@@ -61,7 +62,7 @@ set termencoding=utf-8
 set encoding=utf-8
 
 "set background=dark
-colorscheme BusyBee
+colorscheme zenburn
 set guifont=DejaVu\ Sans\ Mono\ 15
 
 " Line Numbers
@@ -135,6 +136,12 @@ map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 map <Leader>q <esc>:tabclose<CR>
 
+" Easy split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 "Moving code block
 vnoremap <S-tab> <gv
 vnoremap <tab> >gv
@@ -186,6 +193,7 @@ map <C-t> :NERDTreeToggle<CR>
  let g:UltiSnipsEditSplit="vertical"
 
 
+
 "-----------------------python---------------------
 let g:jedi#usages_command = "<leader>z"
 let g:jedi#popup_on_dot = 0
@@ -216,7 +224,7 @@ let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:DoxygenToolkit_compactDoc="yes"
 map <Leader>7 <esc>:Dox<CR>
 
-map <F10> :w<CR> :!clear; make<CR> :!./%<<CR>
+map <F10> :w<CR> :!clear; make<CR>
 nmap <F9> :TagbarToggle<CR>
 
 function! SwitchSourceHeader()
@@ -247,4 +255,3 @@ endfunction
 :nnoremap <space>gw :Gwrite<CR>
 
 :nnoremap <A-p> :CtrlPClearAllCaches<CR>\|:CtrlP<CR>
-
