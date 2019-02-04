@@ -51,6 +51,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
+Plugin 'mileszs/ack.vim'
 Plugin 'vivien/vim-linux-coding-style'
 call vundle#end()
 filetype plugin indent on
@@ -62,7 +63,7 @@ set termencoding=utf-8
 set encoding=utf-8
 
 "set background=dark
-colorscheme zenburn
+colorscheme molokai
 set guifont=DejaVu\ Sans\ Mono\ 15
 
 " Line Numbers
@@ -85,12 +86,20 @@ set undolevels=700
 " set show matching parenthesis
 set showmatch
 
-" Tabs
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
+" Tabs with space
+"set tabstop=4
+"set softtabstop=4
+"set shiftwidth=4
+"set shiftround
+"set expandtab
+
+" indent with tab
+:set noexpandtab
+:set copyindent
+:set preserveindent
+:set softtabstop=0
+:set shiftwidth=4
+:set tabstop=4
 
 " Make search case insensitive
 set hlsearch
@@ -224,7 +233,7 @@ let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:DoxygenToolkit_compactDoc="yes"
 map <Leader>7 <esc>:Dox<CR>
 
-map <F10> :w<CR> :!clear; make<CR>
+map <F10> :w<CR> :term<CR> make<CR>
 nmap <F9> :TagbarToggle<CR>
 
 function! SwitchSourceHeader()
