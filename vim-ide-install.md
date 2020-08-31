@@ -21,9 +21,9 @@ This is a way to install vim as python2/3 and C/C++ ide
 We must have to compile vim in order to have right options available.
 
     git clone https://github.com/vim/vim
-    --enable-multibyte \
         cd vim
     ./configure --with-features=huge \
+        --enable-multibyte \
         --enable-rubyinterp=yes \
         --enable-pythoninterp=yes \
         --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
@@ -35,7 +35,7 @@ We must have to compile vim in order to have right options available.
         --enable-cscope \
         --prefix=/usr/local
 
-    make VIMRUNTIMEDIR=/usr/share/vim/vim81
+    make VIMRUNTIMEDIR=/usr/share/vim/vim80
     sudo make install
 
     which vim
