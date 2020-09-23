@@ -5,12 +5,14 @@ set realname = "Joël Jungo"
 
 # don't forget to set TERM=xterm-256color
 # $ tput colors
-source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
+#source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
+#source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/mutt-colors-dracula.muttrc
 
 #----------------------------imap & smtp---------------------------------------
 set imap_user = "j.jungo@gmail.com"
 set imap_pass = $my_gmail_pwd
-set smtp_url = "smtp://j.jungo@smtp.gmail.com:587/"
+set smtp_url = "smtps://j.jungo@smtp.gmail.com:465/"
 set smtp_pass = $my_gmail_pwd
 
 set folder = "imaps://imap.gmail.com:993"
@@ -18,15 +20,24 @@ set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set trash = +[Gmail]/Trash
 
+set delete=no
+set mark_old=no
+
+set pager_index_lines   = 10    # number of index lines to show
+set pager_context       = 3     # number of context lines to show
+
 set move = no
 set imap_keepalive = 900
 set timeout = 60
 set editor="vim + -c 'setlocal fo+=aw'"
 set text_flowed=yes
-set locale="fr_CH"
+#set locale=`echo "${LC_ALL:-${LC_TIME:-${LANG</code>"`
+set charset="utf-8"
+set send_charset="utf-8"
 set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
+set index_format="%4C %Z %{%a %m/%d %H:%M} %-30.30F (%4c) %s" # format of the index
 auto_view text/html
-set locale="iso-8859-15"
+#set locale="iso-8859-15"
 set copy = no
 set quit=ask-yes
 set forward_format = "Fwd: %s"
@@ -71,15 +82,25 @@ bind index _ collapse-all
 # set up the sidebar, default not visible
 set sidebar_width=27
 set sidebar_visible=yes
-set sidebar_delim='|'
-set sidebar_sort=no
+#set sidebar_delim='|'
+#set sidebar_sort=no
 
 # which mailboxes to list in the sidebar
 mailboxes =INBOX ="[Gmail]/Tous les messages"
 mailboxes ="[Gmail]/Messages envoyés"
 mailboxes =[Gmail]/Corbeille
 mailboxes =[Gmail]/Spam
-mailboxes =[Gmail]/openssl-ud
+mailboxes imaps://imap.gmail.com:993/j
+mailboxes imaps://imap.gmail.com:993/factures/à\ payer
+mailboxes imaps://imap.gmail.com:993/factures/payé
+mailboxes imaps://imap.gmail.com:993/lkml/stable
+mailboxes imaps://imap.gmail.com:993/lkml/iio
+mailboxes imaps://imap.gmail.com:993/lkml/usb
+mailboxes imaps://imap.gmail.com:993/lkml/i2c
+mailboxes imaps://imap.gmail.com:993/lkml/stable/5_8
+mailboxes imaps://imap.gmail.com:993/lkml/stable/5_9
+
+
 
 # color of folders with new mail
 color sidebar_new yellow default
@@ -90,9 +111,26 @@ bind index \CP sidebar-prev
 bind index \CN sidebar-next
 bind index \CO sidebar-open
 
+#bind pager g top
+#bind pager G bottom
+#bind attach,index g first-entry
+#bind attach,index G last-entry
+
 # b toggles sidebar visibility
 macro index b '<enter-command>toggle sidebar_visible<enter>'
 macro pager b '<enter-command>toggle sidebar_visible<enter>'
 
 # Remap bounce-message function to "B"
 bind index B bounce-message
+
+#set mailcap_path = ~/.mutt/mailcap
+ macro attach 'V' "<pipe-entry>iconv -c --to-code=UTF8 > ~/.mutt/cache/bodies/mail.html<enter><shell-escape>firefox ~/.mutt/cache/bodies/mail.html<enter>"
+
+color body green default "^diff \-.*"
+color body green default "^index [a-f0-9].*"
+color body green default "^\-\-\- .*"
+color body green default "^[\+]{3} .*"
+color body cyan default "^[\+][^\+]+.*"
+color body red  default "^\-[^\-]+.*"
+color body brightblue default "^@@ .*"
+
