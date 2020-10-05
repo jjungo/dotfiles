@@ -34,8 +34,10 @@ set text_flowed=yes
 #set locale=`echo "${LC_ALL:-${LC_TIME:-${LANG</code>"`
 set charset="utf-8"
 set send_charset="utf-8"
-set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
-set index_format="%4C %Z %{%a %m/%d %H:%M} %-30.30F (%4c) %s" # format of the index
+#set date_format="%A %D %b %Y à %H:%M:%S (%Z)"
+set date_format="%H:%M"
+#set index_format="%4C %Z %{%a %m/%d %H:%M} %-30.30F (%4c) %s" # format of the index
+set index_format="%4C %Z %{%a %m/%d} %D %-30.30F (%4c) %s" # format of the index
 auto_view text/html
 #set locale="iso-8859-15"
 set copy = no
@@ -74,6 +76,8 @@ source $alias_file
 #---------------------------threads--------------------------------------------
 set sort = 'threads'
 set sort_aux = 'reverse-last-date-received'
+#set sort_aux = last-date-received                           
+#set sort = reverse-threads
 unset collapse_unread
 bind index - collapse-thread
 bind index _ collapse-all
