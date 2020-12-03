@@ -26,6 +26,8 @@ set mark_old=no
 set pager_index_lines   = 10    # number of index lines to show
 set pager_context       = 3     # number of context lines to show
 
+set edit_headers                     # show headers when composing
+
 set move = no
 set imap_keepalive = 900
 set timeout = 60
@@ -101,8 +103,8 @@ mailboxes imaps://imap.gmail.com:993/lkml/stable
 mailboxes imaps://imap.gmail.com:993/lkml/iio
 mailboxes imaps://imap.gmail.com:993/lkml/usb
 mailboxes imaps://imap.gmail.com:993/lkml/i2c
-mailboxes imaps://imap.gmail.com:993/lkml/stable/5_8
 mailboxes imaps://imap.gmail.com:993/lkml/stable/5_9
+mailboxes imaps://imap.gmail.com:993/lkml/stable/5_10
 
 
 

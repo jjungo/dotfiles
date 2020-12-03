@@ -20,6 +20,9 @@
 "
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
+"if has('python3')
+"endif
+"let g:pymode_python = 'python3'
 
 " force vim to sources .vimrc file into the current directory and do it
 " securely
@@ -51,7 +54,6 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
-Plugin 'mileszs/ack.vim'
 Plugin 'vivien/vim-linux-coding-style'
 call vundle#end()
 filetype plugin indent on
@@ -86,20 +88,12 @@ set undolevels=700
 " set show matching parenthesis
 set showmatch
 
-" Tabs with space
-"set tabstop=4
-"set softtabstop=4
-"set shiftwidth=4
-"set shiftround
-"set expandtab
-
-" indent with tab
-:set noexpandtab
-:set copyindent
-:set preserveindent
-:set softtabstop=0
-:set shiftwidth=4
-:set tabstop=4
+" Tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
 
 " Make search case insensitive
 set hlsearch
@@ -202,12 +196,13 @@ map <C-t> :NERDTreeToggle<CR>
  let g:UltiSnipsEditSplit="vertical"
 
 
+let g:linuxsty_patterns = [ "$HOME/CloudStation/code/motu/module/motu8preusb" ]
 
 "-----------------------python---------------------
 let g:jedi#usages_command = "<leader>z"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
-let g:jedi#documentation_command = "<leader>d"
+"let g:jedi#documentation_command = "<leader>d"
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 " Python folding
 " " mkdir -p ~/.vim/ftplugin
@@ -224,7 +219,12 @@ let g:ycm_show_diagnostics_ui = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>vj :vsplit \| YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>k :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>vk :vsplit \| YcmCompleter GoToDeclaration<CR>
+nnoremap <Leader>d :YcmCompleter GetDoc<CR>
+nnoremap <leader>vd :vsplit \| YcmCompleter GetDoc<CR>
+
 
 let g:DoxygenToolkit_briefTag_pre="@Brief "
 let g:DoxygenToolkit_paramTag_pre="@Param "
@@ -233,7 +233,7 @@ let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:DoxygenToolkit_compactDoc="yes"
 map <Leader>7 <esc>:Dox<CR>
 
-map <F10> :w<CR> :term<CR> make<CR>
+map <F10> :w<CR> :!clear; make<CR>
 nmap <F9> :TagbarToggle<CR>
 
 function! SwitchSourceHeader()
@@ -264,3 +264,6 @@ endfunction
 :nnoremap <space>gw :Gwrite<CR>
 
 :nnoremap <A-p> :CtrlPClearAllCaches<CR>\|:CtrlP<CR>
+
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>

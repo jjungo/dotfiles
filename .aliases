@@ -1,0 +1,22 @@
+alias reboot='sudo reboot'
+alias v='vim'
+alias vi='vim'
+alias "docker-clean-image"='docker rmi -f $(docker images | grep "<none>" | awk "{print \$3}")'
+alias "docker-clean-container"='docker rm $(docker ps -a -q)'
+alias m=mutt
+alias vimrc='vim ~/.vimrc'
+alias muttrc='vim ~/.muttrc'
+alias docker='sudo docker'
+alias vpn-home='sudo ~/openvpn/connect.sh'
+alias what-is-my-ip="curl -s checkip.dyndns.org | sd -e 's/.*Current IP Address: //' -e 's/<.*$//'; wget http://ipinfo.io/ip -qO - "
+alias what-is-my-ip="wget http://ipinfo.io/ip -qO -"
+alias ida='~/.wine/drive_c/Program\ Files\ \(x86\)/IDA\ 6.6/idaq.exe'
+alias stfu='sudo shutdown -h now'
+alias restart-wifi='sudo rmmod iwlmvm iwlwifi && sudo modprobe iwlmvm iwlwifi'
+alias xclip="xclip -selection c"
+alias git='LANG=en_US.UTF-8 git'
+alias py=python3
+alias python=python3
+alias gg='git gui'
+alias tailk='sudo tail -f /var/log/syslog'
+alias dpkgi='sudo dpkg -i'
