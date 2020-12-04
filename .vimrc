@@ -37,7 +37,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " Track the engine.
 Plugin 'SirVer/ultisnips'
@@ -55,6 +55,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'vivien/vim-linux-coding-style'
+Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 filetype plugin indent on
 
@@ -65,7 +66,7 @@ set termencoding=utf-8
 set encoding=utf-8
 
 "set background=dark
-colorscheme molokai
+"colorscheme molokai
 set guifont=DejaVu\ Sans\ Mono\ 15
 
 " Line Numbers
@@ -140,10 +141,10 @@ map <Leader>m <esc>:tabnext<CR>
 map <Leader>q <esc>:tabclose<CR>
 
 " Easy split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 "Moving code block
 vnoremap <S-tab> <gv
@@ -188,9 +189,9 @@ set selection=inclusive
 map <C-t> :NERDTreeToggle<CR>
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
- let g:UltiSnipsExpandTrigger="<c-s>"
- let g:UltiSnipsJumpForwardTrigger="<c-b>"
- let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<c-s>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "
 " " If you want :UltiSnipsEdit to split your window.
  let g:UltiSnipsEditSplit="vertical"
@@ -214,16 +215,16 @@ set nofoldenable
 "-----------------------C - C++--------------------
 " https://github.com/Valloric/YouCompleteMe
 " ./install.sh --clang-completer
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+" let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_collect_identifiers_from_tags_files = 1
 
-nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>vj :vsplit \| YcmCompleter GoToDefinition<CR>
-nnoremap <Leader>k :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>vk :vsplit \| YcmCompleter GoToDeclaration<CR>
-nnoremap <Leader>d :YcmCompleter GetDoc<CR>
-nnoremap <leader>vd :vsplit \| YcmCompleter GetDoc<CR>
+" nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>vj :vsplit \| YcmCompleter GoToDefinition<CR>
+" nnoremap <Leader>k :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>vk :vsplit \| YcmCompleter GoToDeclaration<CR>
+" nnoremap <Leader>d :YcmCompleter GetDoc<CR>
+" nnoremap <leader>vd :vsplit \| YcmCompleter GetDoc<CR>
 
 
 let g:DoxygenToolkit_briefTag_pre="@Brief "
