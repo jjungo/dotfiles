@@ -14,12 +14,17 @@ fi
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
     && mkdir -p ~/.vim/{bundle,autoload}
 
-vim -c 'PluginInstall' -c 'qa!' > /dev/null 2>&1
+cp .aliases .bashrc .vimrc ~/
+echo "Install vim plugin..."
+vim -u ~/.vimrc -c 'PluginInstall' -c 'qa!'
 
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-git clone https://github.com/jjungo/tmux-config.git \
-    && ./tmux-config/install.sh
+cp .zshrc ~/
+
+git clone https://github.com/jjungo/tmux-config.git /tmp/tmux-config\
+    && /tmp/tmux-config/install.sh
+rm -rf /tmp/tmux-config
 
 
 export TERM=xterm-256color
