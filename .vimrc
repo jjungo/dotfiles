@@ -42,7 +42,6 @@ Plugin 'gmarik/Vundle.vim'
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 " " Snippets are separated from the engine. Add this if you want them:
@@ -56,6 +55,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'vivien/vim-linux-coding-style'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -249,11 +250,6 @@ endfunction
 :nmap <F4> :call SwitchSourceHeader()<CR>
 
 
-:nnoremap <leader>g :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " *.[!'swp'o]"<cr>:!clear<cr>:botright copen 7<cr>
-:nnoremap <leader>a :silent execute "grep! -rin " . shellescape(expand("<cword>")) . " ."<cr>:!clear<cr>:botright copen 7<cr>
-:nnoremap <leader>A :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " ."<cr>:!clear<cr>:botright copen 7<cr>
-:nnoremap <leader>G :silent execute "grep! -rin " . shellescape(expand("<cWORD>")) . " *.[!'swp'o]"<cr>:!clear<cr>:botright copen 7<cr>
-
 :nnoremap <space>dg :diffget<space>
 :nnoremap <space>du :diffupdate<CR>
 :nnoremap <space>gb :Git branch<space>
@@ -264,7 +260,10 @@ endfunction
 :nnoremap <space>gs :Gstatus<CR>
 :nnoremap <space>gw :Gwrite<CR>
 
-:nnoremap <A-p> :CtrlPClearAllCaches<CR>\|:CtrlP<CR>
 
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
+map <C-p> <Esc><Esc>:Files <CR>
+map <C-f> <Esc><Esc>:BLines <CR>
+map <C-g> <Esc><Esc>:BCommits!<CR>
+nnoremap <silent> <Leader>a :Rg <C-R><C-W><CR>
+
+
