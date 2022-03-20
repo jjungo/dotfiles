@@ -33,7 +33,7 @@ We must have to compile vim in order to have right options available.
         --enable-cscope \
         --prefix=/usr/local
 
-    make VIMRUNTIMEDIR=/usr/share/vim/vim80
+    make VIMRUNTIMEDIR=/usr/local/share/vim/vim82 VIMRUNTIME=/usr/share/vim/vim82
     sudo make install
 
     which vim
